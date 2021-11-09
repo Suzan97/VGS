@@ -1,0 +1,180 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="TemplateMo">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <title>VGS Center - About Page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo-finance-business.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.css'%}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo-style.css' %}">
+  </head>
+<body>
+    <!-- Page Loader -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div> 
+
+ <!-- Header -->
+ <div class="sub-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-xs-12">
+          <ul class="left-info">
+            <li><a href="#"><i class="fa fa-clock-o"></i>Mon-Fri 09:00-17:00</a></li>
+            <li><a href="#"><i class="fa fa-phone"></i>090-080-0760</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <ul class="right-icons">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <header class="">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'index' %}"><h2>VGS Center</h2></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'index' %}">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll" data-image-src="{% static 'assets/images/hero.jpg'%}"> 
+    </div>
+
+  <div class="container-fluid tm-container-content tm-mt-60">
+    {% if query %}
+  
+    <h2>
+
+    {% with results.count as total_results %}
+
+    Found {{ total_results }} result{{ total_results|pluralize }}
+
+    {% endwith %}
+
+    </h2>
+    <div class="row tm-mb-90 tm-gallery">
+        {% for c in results %} 
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+            <figure class="effect-ming tm-video-item">
+                <img src="{{c.thumbnail.url}}" alt="Image" class="img-fluid">
+                <figcaption class="d-flex align-items-center justify-content-center">
+                    <h2>{{c.vidtitle}}</h2>
+                    <a href="{% url 'videodetail' c.id %}">View more</a> 
+                </figcaption>                    
+            </figure>
+            <div class="d-flex justify-content-between tm-text-gray">
+                <span>24 Oct 2020</span>
+                <span>10,460 views</span>
+            </div>
+        </div>
+        {% empty %}
+         <h3>RESULTS NOT FOUND</h3>
+        {% endfor %}      
+    </div> <!-- row -->
+
+
+    <form action="{% url 'video' %}" class="form-inline" method="get">
+  
+          <button type="submit" class="btn btn-primary btn-lg mb-2">Back</button>
+  
+          </form>
+    
+
+    <div class="row tm-mb-90">
+        <div class="col-12 d-flex justify-content-between align-items-center tm-paging-col">
+            <a href="javascript:void(0);" class="btn btn-primary tm-btn-prev mb-2 disabled">Previous</a>
+            <div class="tm-paging d-flex">
+                <a href="javascript:void(0);" class="active tm-paging-link">1</a>
+                <a href="javascript:void(0);" class="tm-paging-link">2</a>
+                <a href="javascript:void(0);" class="tm-paging-link">3</a>
+                <a href="javascript:void(0);" class="tm-paging-link">4</a>
+            </div>
+            <a href="javascript:void(0);" class="btn btn-primary tm-btn-next">Next Page</a>
+        </div>            
+    </div>
+    {% endif %}
+</div> <!-- container-fluid, tm-container-content -->
+
+<footer class="tm-bg-gray pt-5 pb-3 tm-text-gray tm-footer">
+    <div class="sub-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <p>Copyright &copy; 2021 VGS Center Africa
+            
+            - Design: <a rel="nofollow noopener" href="https://media-afrique.co.ke/" target="_blank">Media AfriQue</a></p>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </footer>
+  
+  <script src="{% static 'assets/js/plugins.js' %}"></script>
+  <script>
+      $(window).on("load", function() {
+          $('body').addClass('loaded');
+      });
+  </script>
+   <!-- Bootstrap core JavaScript -->
+   <script src="{% static 'vendor/jquery/jquery.min.js'%}"></script>
+   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+   <!-- Additional Scripts -->
+   <script src="{% static 'assets/js/custom.js' %}"></script>
+   <script src="{% static 'assets/js/modal.js' %}"></script>
+   <script src="{% static 'assets/js/owl.js' %}"></script>
+   <script src="{% static 'assets/js/slick.js' %}"></script>
+   <script src="{% static 'assets/js/accordions.js' %}"></script>
+
+   <script language = "text/Javascript"> 
+     cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+     function clearField(t){                   //declaring the array outside of the
+     if(! cleared[t.id]){                      // function makes it static and global
+         cleared[t.id] = 1;  // you could use true and false, but that's more typing
+         t.value='';         // with more chance of typos
+         t.style.color='#fff';
+         }
+     }
+   </script>
+</body>
+</html>
+
+
