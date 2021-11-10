@@ -28,7 +28,7 @@ with open(os.path.join(BASE_DIR, 'secret_key.txt')) as f:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1:8000', 'https://ecstatic-bose-4979e3.netlify.app/']
+ALLOWED_HOSTS = ['127.0.0.1:8000', 'https://safe-dusk-87954.herokuapp.com/']
 
 from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())
 HASHID_FIELD_SALT = 'get_random_secret_key()'
