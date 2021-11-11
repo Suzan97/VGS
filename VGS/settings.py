@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'VGSDo.apps.VgsdoConfig',
     'embed_video',
-    'social_widgets',
 ]
 
 MIDDLEWARE = [
