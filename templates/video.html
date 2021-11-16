@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load embed_video_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -134,7 +134,9 @@
               </div>
           </div>
           
-          {% endvideo %}  
+          {% endvideo %} 
+          {% empty %}
+            <h3>No videos...</h3>
           {% endfor %}
 
       </div> <!-- row -->
